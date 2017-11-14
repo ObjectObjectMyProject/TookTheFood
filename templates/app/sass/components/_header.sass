@@ -1,0 +1,367 @@
+.header
+  &-main
+    padding: 15px 0 0 0
+    margin-top: 20px
+    @media (max-width: $screen-md-max)
+      flex-wrap: wrap
+      margin-top: 5px
+  &-logo
+    @media (max-width: $screen-md-max)
+      width: 100%
+      margin-bottom: 20px
+    @media (max-width: $screen-xs-max)
+      width: 50%
+      margin-bottom: 0
+    &__link
+      font-family: "BebasBold"
+      color: white
+      padding: 6px 16px
+      background-color: $black
+      display: block
+      border-radius: 3px
+      font-size: rem(22px)
+      @media (max-width: $screen-md-max)
+        width: 150px
+        text-align: center
+        margin: 0 auto
+  &-category
+    margin-left: 10%
+    @media (max-width: $screen-md-max)
+      margin-left: 3%
+    @media (max-width: $screen-xs-max)
+      display: none
+    &__nav
+      ul
+        display: flex
+        padding: 0
+        margin: 0
+    &__list
+      margin-right: rem(15px)
+      list-style-type: none
+    &__link
+      display: flex
+      align-items: center
+      color: $black
+      text-decoration: none
+      $parent: &
+      &:hover
+          #{$parent}-pic
+            svg
+              fill: $red
+              transform: rotate(-8deg)
+          #{$parent}-text
+            color: $red
+
+      &-pic
+        width: 50px
+        height: 50px
+        margin-right: rem(10px)
+        svg
+          transition: .2s all linear
+      &-text
+        font-family: $bold
+        text-transform: uppercase
+        font-size: rem(14px)
+        transition: .2s color linear
+
+  &-time
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+    margin-left: 3%
+    @media (max-width: $screen-md-max)
+      margin-left: 5%
+    @media (max-width: $screen-sm-max)
+      display: none
+    h6
+      margin: 0
+      padding: 0
+      text-decoration: underline
+      color: #9E9E9E
+      font-size: rem(12px)
+      line-height: 1.3
+      margin-bottom: 5px
+    strong
+      font-size: rem(18px)
+      color: #333
+      font-family: "LatoBold"
+      line-height: 1
+
+  &-login
+    margin-left: 2%
+    display: flex
+    align-items: center
+    @media (max-width: $screen-md-max)
+      flex-grow: 1
+      justify-content: center
+    &__signIn
+      span
+        font-size: rem(14px)
+        font-family: "LatoBold"
+        margin-left: rem(10px)
+        padding: 6px rem(10px)
+        background-color: #66BB6A
+        color: #fafafa
+        text-decoration: none
+        border-radius: 3px
+        transition: background-color .2s linear
+        cursor: pointer
+        &:link,&:hover,&:active
+          text-decoration: none
+        &:hover
+          background-color: #81C784
+    &__link
+      display: flex
+      color: $black
+      transition: .2s color ease
+      font-family: "RobotoBold"
+      text-decoration: underline
+      &:hover
+        color: $red
+        .header-login__pic
+          svg
+            fill: $red
+    &__pic
+      display: flex
+      align-items: center
+      svg
+        width: 15px
+        height: 15px
+        transition: .2s fill ease
+        @media (max-width: $screen-xs-max)
+          width: 20px
+          height: 20px
+    &__text
+      font-size: rem(12px)
+      margin-left: rem(4px)
+
+
+  &-menu
+    &__button
+      display: flex
+      outline: none
+      background-color: transparent
+      border: none
+      align-items: center
+
+      &-pic
+        width: rem(20px)
+        height: 20px
+      &-text
+        line-height: 1
+        margin-left: rem(5px)
+        font-family: $bold
+        font-size: rem(22px)
+
+  &-bottom
+    display: flex
+    background-color: $red
+    width: 100%
+    margin-top: 30px
+    justify-content: space-between
+    align-items: center
+    position: relative
+    padding: 0 rem(30px)
+    @media (max-width: $screen-xs-max)
+      margin-top: 15px
+
+  &-nav
+    $parent: &
+    &__wrap
+      display: flex
+      list-style-type: none
+      margin: 0
+      padding: 0
+    &__list.header-menu
+      @media (max-width: $screen-xs-max)
+        display: block
+    &__list
+      font-size: rem(15px)
+      line-height: rem(15px)
+      @media (max-width: $screen-xs-max)
+        display: none
+    &__list:not(:last-child)
+      padding-right: rem(25px)
+      @media (max-width: $screen-xs-max)
+        padding-right: 0
+    &__link
+      color: $white
+      display: inline-block
+      padding: 22px 0
+      &:hover
+        #{$parent}__dropdown
+          opacity: 1
+          visibility: visible
+          z-index: 2
+      &.with-picture
+        display: flex
+      &-pic
+        display: block
+        margin-right: rem(5px)
+        svg
+          width: 16px
+          height: 16px
+          fill: $white
+      &-text
+        display: flex
+        height: 100%
+    &__dropdown
+      position: absolute
+      width: 100%
+      display: flex
+      top: 100%
+      left: 0
+      background-color: $white
+      transition: all linear .2s
+      opacity: 0
+      visibility: hidden
+      flex-wrap: wrap
+      &-picture
+        svg
+          width: 60px
+          height: 60px
+      &-item
+        margin: 0
+        outline: none
+        padding: 25px 0
+        width: 20%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        transition: .2s background-color linear
+        &:hover
+          background-color: #EEEEEE
+        @media (max-width: $screen-sm-max)
+          width: 25%
+        @media (max-width: $screen-xs-max)
+          width: 50%
+      figcaption
+        padding: 0
+        margin: 0
+        margin-top: 15px
+      &-text
+        padding: 0
+        margin: 0
+        font-size: rem(16px)
+        color: $black
+
+  &-cart
+    $context: &
+    &:hover
+      #{$context}__dropdown
+        visibility: visible
+        opacity: 1
+    &__dropdown
+      position: absolute
+      top: 100%
+      right: 0
+      min-width: 400px
+      background-color: $white
+      opacity: 0
+      visibility: hidden
+      transition: all linear .2s
+      z-index: 1
+      @media (max-width: $screen-xs-max)
+        width: 100%
+        padding: 0 rem(15px)
+      &-icon
+        margin-right: rem(20px)
+        width: 20px
+        height: 20px
+      &-counter, &-cost
+        display: flex
+        align-items: center
+        span
+          margin-right: 6px
+      &-title
+        font-family: $regular
+        margin: 0
+        padding: 0
+        margin-top: 10px
+        text-align: center
+        text-decoration: underline
+        display: block
+      &-wrap
+        margin-top: 20px
+      &-footer
+        border-top: 1px solid #EEEEEE
+        padding: 10px 0
+        margin: 0 30px
+    &__button
+      display: flex
+      align-items: center
+      outline: none
+      border: none
+      background-color: transparent
+      height: 100%
+      position: relative
+      cursor: pointer
+      $context: &
+      &:hover
+        #{$context}-head
+          transform: translateY(-40px) rotate(-10deg)
+          z-index: 2
+          position: relative
+      &-pic
+        margin-right: rem(8px)
+        svg
+          fill: $white
+          width: rem(20px)
+          height: 20px
+      &-text
+        font-family: "LatoBold"
+        color: $white
+        padding: 22px 0
+      &-counter
+        position: absolute
+        left: -2px
+        bottom: 13px
+        border-radius: 50%
+        color: $white
+        padding: 2px 6px
+        font-size: rem(12px)
+        background-color: $black
+        font-family: "LatoBold"
+
+      &-head
+        transition: .2s all linear
+
+  &-service
+    margin-left: 3%
+    display: flex
+    @media (max-width: $screen-md-max)
+      margin-left: 7%
+    @media (max-width: $screen-sm-max)
+      margin-left: 4%
+    @media (max-width: $screen-xs-max)
+      display: none
+    &__time
+      height: 100%
+      display: flex
+      align-items: center
+      cursor: pointer
+      svg
+        width: 40px
+        height: 40px
+        transition: .1s transform linear
+      &:hover
+        svg
+          transform: scale(1.1)
+
+    &__present
+      height: 100%
+      display: flex
+      align-items: center
+      margin-left: 30px
+      cursor: pointer
+      @media (max-width: $screen-md-max)
+        margin-left: 40px
+      svg
+        width: 40px
+        height: 40px
+        transition: .1s transform linear
+      &:hover
+        svg
+          transform: scale(1.1)

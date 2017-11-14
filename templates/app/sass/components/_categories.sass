@@ -1,0 +1,43 @@
+.categories
+  &-title
+    margin: 20px 0
+    width: 100%
+    border-bottom: 1px solid #dedede
+    h4
+      font-size: rem(25px)
+      color: $black
+      margin: 0
+      line-height: 1
+      padding-bottom: 20px
+      margin-top: 10px
+      @media (max-width: $screen-md-max)
+        text-align: center
+  &-menu
+    display: flex
+    flex-wrap: wrap
+    @media (max-width: $screen-xs-max)
+      margin: 0 15px
+    &__item
+      width: 25%
+      cursor: pointer
+      transition: all linear .2s
+      padding-bottom: 20px
+      @media (max-width: $screen-md-max)
+        width: calc(100%/3)
+      @media (max-width: $screen-xs-max)
+        width: 50%
+      &:hover
+        box-shadow: 0px 0px 20px #e7e7e7
+      &-pic
+        padding: 0 rem(30px)
+        @media (max-width: $screen-xs-max)
+          padding: 0 rem(20px)
+        img
+          display: block
+          width: 100%
+          height: auto
+      &-text
+        text-align: center
+        @media (max-width: $screen-xs-max)
+          margin: 10px 0
+

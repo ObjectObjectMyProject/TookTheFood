@@ -1,0 +1,28 @@
+.footer
+  &-main
+    padding-top: 20px
+  &-wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    border-top: 1px solid #dedede
+    padding-top: 30px
+    padding-bottom: 30px
+    @media (max-width: $screen-xs-max)
+      margin: 0 15px
+      flex-direction: column
+    .header-logo
+      width: auto
+      margin-bottom: 0
+      @media (max-width: $screen-xs-max)
+        margin-bottom: 20px
+  &-call
+    display: flex
+    align-items: center
+    svg
+      width: 30px
+      height: 30px
+      margin-right: rem(10px)
+    a
+      color: $black

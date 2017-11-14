@@ -1,0 +1,133 @@
+.category
+  padding: 30px 0
+
+  &-items
+    display: flex
+    flex-wrap: wrap
+  &-item
+    width: 33.33333%
+    cursor: pointer
+    padding: 15px rem(25px)
+    transition: .2s all linear
+    &:hover
+      background-color: $white
+    &__price
+      font-size: rem(22px)
+      color: $red
+    &__buy
+      &-btn
+        height: 40px
+        padding: 0 rem(30px)
+        font-family: $bold
+        font-size: rem(15px)
+        background-color: $red
+        border: none
+        color: $white
+        transition: .2s all linear
+        cursor: pointer
+        &:hover
+          background-color: $red + 10%
+
+    &__counter
+      display: flex
+      align-items: center
+      font-weight: bold
+      background-color: #fafafa
+      padding: 0 rem(18px)
+      &-number
+        padding: 0 12px
+      &-minus
+        font-size: rem(22px)
+    &__inner
+      display: flex
+      justify-content: space-between
+      align-items: center
+      margin-bottom: 30px
+    &__weight
+      color: #b5b5b5
+    &__descr
+      p
+        font-style: italic
+        font-size: rem(14px)
+    &__title
+      h5
+        margin: 0
+        font-size: rem(20px)
+        padding-bottom: 5px
+        border-bottom: 1px solid #E0E0E0
+    &__pic
+      padding: rem(20px)
+      img
+        width: 100%
+        height: auto
+        display: block
+
+  &-filter
+    background-color: #fafafa
+    padding: 0 rem(20px)
+    &__element
+      &-checkbox
+        width: 16px
+        height: 16px
+        border: 2px solid #333333
+        border-radius: 3px
+        margin-right: 10px
+        transition: .2s all linear
+        display: flex
+        justify-content: center
+        align-items: center
+      &-text
+        font-size: rem(14px)
+        font-family: $bold
+        display: block
+        position: relative
+    &__title
+      text-align: center
+      padding: 10px 0
+    &__raw
+      padding: 20px 0
+      &-element
+        margin-bottom: 8px
+      &-label.checkbox
+        display: flex
+        align-items: center
+        cursor: pointer
+      &-checkbox
+        display: none
+        &:checked + .category-filter__element-checkbox
+          background-color: #333333
+        &:checked ~ .category-filter__element-text
+          &::after
+            content: ''
+            display: block
+            width: 4px
+            height: 4px
+            border-radius: 50%
+            position: absolute
+            top: 6px
+            right: -8px
+            background-color: $red
+
+      &-numbers
+        display: flex
+        justify-content: space-between
+        margin-top: 10px
+      &-number
+        font-family: $bold
+        font-size: rem(14px)
+      h5
+        margin: 0
+        margin-bottom: 15px
+        font-size: rem(15px)
+      &-range
+        width: 100%
+        display: block
+        border-radius: 8px
+        height: 6px
+        .ui-slider-handle
+          top: -8px
+          border-radius: 50%
+          border: 2px solid $red
+          &.ui-state-focus
+            background-color: $red
+            outline: none

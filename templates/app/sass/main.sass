@@ -1,0 +1,83 @@
+@import "base/fonts"
+@import "base/vars"
+
+
+
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $regular
+	overflow-x: hidden
+	opacity: 1
+	margin: 0
+	padding: 0
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+
+
+// Vendor
+
+@import "base/grid"
+@import "vendor/slick"
+
+// UI Components
+
+@import "ui/ui"
+
+
+// Components
+
+@import "components/header"
+@import "components/modal"
+@import "components/first-screen"
+@import "components/categories"
+@import "components/registration"
+@import "components/error"
+@import "components/category"
+@import "components/footer"
+
+
+
+
