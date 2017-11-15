@@ -1,12 +1,12 @@
 <template>
-    <div id="app">
+    <div id="app" v-bind:class="{hidden: hiddenOverflow}">
         <HeaderMain/>
         <router-view></router-view>
         <FooterMain></FooterMain>
-        <div class="modal-view close">
+        <div class="modal-view" v-bind:class="{ open: openModal }">
             <div class="modal-view__container">
                 <header class="modal-view__header">
-                    <div class="modal-view__header-close">
+                    <div class="modal-view__header-close" @click.stop.prevent="say">
                         [x] Закрыть
                     </div>
                 </header>
@@ -23,7 +23,7 @@
                         <label>
                             <h5> Почта: </h5>
                             <div class="ui-form__wrapper">
-                                <input type="text">
+                                <input type="text" v-model="user.mail">
                                 <div class="ui-form__wrapper-icon">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 													 viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
@@ -43,7 +43,7 @@
                         <label>
                             <h5> Пароль: </h5>
                             <div class="ui-form__wrapper">
-                                <input type="text">
+                                <input type="text" v-model="user.password">
                                 <div class="ui-form__wrapper-icon">
                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                     width="516.375px" height="516.375px" viewBox="0 0 516.375 516.375" style="enable-background:new 0 0 516.375 516.375;"
@@ -58,10 +58,10 @@
                         </label>
                         <p class="ui-form__error-message"> </p>
                     </div>
-                    <button class="modal-view__footer-accept"> Подтвердить </button>
+                    <button class="modal-view__footer-accept" @click="auth"> Подтвердить </button>
                 </footer>
             </div>
-        </div>
+        </div  >
     </div>
 
 </template>
@@ -87,6 +87,17 @@
 
     export default {
         name: 'app',
+        data: function(){
+            return {
+                name: '',
+                openModal: false,
+                hiddenOverflow: false,
+                user: {
+                    mail: '',
+                    password: ''
+                }
+            }
+        },
         firebase: {
             users: usersRef
         },
@@ -98,6 +109,36 @@
 
         },
         created() {
+
+            this.$on('sign', function(status){
+                this.openModal = true;
+                this.hiddenOverflow = true;
+            })
+        },
+        methods: {
+            say(){
+                this.openModal = false;
+                this.hiddenOverflow = false;
+            },
+            auth(){
+                Firebase.auth().signInWithEmailAndPassword(this.user.mail, this.user.password)
+                    .then((res) => {
+
+                        this.user.mail = '';
+                        this.user.password = '';
+
+                        this.openModal = false;
+                        this.hiddenOverflow = false;
+                        console.dir(res);
+                    })
+                    .catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+
+                    // ...
+                });
+            }
 
         }
     }

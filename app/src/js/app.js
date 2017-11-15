@@ -30,7 +30,7 @@ const router = new VueRouter({
 });
 
 
-Vue.prototype.$eventHub = new Vue();
+
 
 const vm = new Vue({
     el: '#app',

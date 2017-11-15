@@ -249,14 +249,14 @@
 									c0-2.951,0.002-5.003,0.005-6.399C308.062,304.575,308.018,303.664,307.935,298.397z"/>
 							</svg>
                         </div>
-                        <div class="header-login__text">
+                        <div class="header-login__text" v-if="signIn">
 							<router-link to="/registration" >
                             	Регистрация
 							</router-link>
 
                         </div>
                     </a>
-					<div class="header-login__signIn">
+					<div class="header-login__signIn" v-if="signIn">
 						<span @click="signIn" >
 							Вход
 						</span>

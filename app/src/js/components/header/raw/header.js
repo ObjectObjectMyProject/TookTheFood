@@ -3,12 +3,13 @@ export default {
     name: 'header',
     data: () => {
         return {
-            modalState: true
+            modalState: true,
+            signIn: false
         }
     },
     methods: {
-        signIn: () => {
-            console.log(this);
+        signIn: function (){
+            this.$parent.$emit('sign');
         }
     },
     mounted: function(){

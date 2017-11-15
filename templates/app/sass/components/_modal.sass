@@ -1,6 +1,6 @@
 .modal-view
   position: absolute
-  top: -20px
+  top: 0
   left: 0
   background-color: $red
   width: 100%
@@ -9,6 +9,8 @@
   align-items: center
   justify-content: center
   z-index: 1000
+  opacity: 0
+  visibility: hidden
   &__container
     width: 40%
     background-color: $white
@@ -44,6 +46,10 @@
         background-color: $red
         color: $white
 
-.modal-view.close
-  opacity: 0
-  visibility: hidden
+.modal-view.open
+  opacity: 1
+  visibility: visible
+
+#app.hidden
+  overflow: hidden
+  height: 100vh
