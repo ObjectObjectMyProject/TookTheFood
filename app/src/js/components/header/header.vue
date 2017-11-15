@@ -235,7 +235,7 @@
                     </div>
                 </div>
                 <div class="header-login">
-                    <a href="#" class="header-login__link">
+                    <a href="" class="header-login__link" v-if="signInData">
                         <div class="header-login__pic">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								 viewBox="0 0 350 350" style="enable-background:new 0 0 350 350;" xml:space="preserve">
@@ -249,14 +249,14 @@
 									c0-2.951,0.002-5.003,0.005-6.399C308.062,304.575,308.018,303.664,307.935,298.397z"/>
 							</svg>
                         </div>
-                        <div class="header-login__text" v-if="signIn">
+                        <div class="header-login__text" >
 							<router-link to="/registration" >
                             	Регистрация
 							</router-link>
 
                         </div>
                     </a>
-					<div class="header-login__signIn" v-if="signIn">
+					<div class="header-login__signIn" v-if="signInData">
 						<span @click="signIn" >
 							Вход
 						</span>

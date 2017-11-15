@@ -25,11 +25,14 @@
         text-align: center
         margin: 0 auto
   &-category
-    margin-left: 10%
+    margin-left: 6%
     @media (max-width: $screen-md-max)
       margin-left: 3%
+    @media (max-width: $screen-sm-max)
+      margin-left: 0
     @media (max-width: $screen-xs-max)
       display: none
+
     &__nav
       ul
         display: flex
@@ -89,12 +92,13 @@
       line-height: 1
 
   &-login
-    margin-left: 2%
+    margin-left: 5%
     display: flex
     align-items: center
     @media (max-width: $screen-md-max)
       flex-grow: 1
       justify-content: center
+      margin-left: 3%
     &__signIn
       span
         font-size: rem(14px)
@@ -135,6 +139,11 @@
     &__text
       font-size: rem(12px)
       margin-left: rem(4px)
+      a
+        color: $black
+        &:hover, &:visited, &:active
+          color: $black
+
 
 
   &-menu
@@ -329,12 +338,12 @@
         transition: .2s all linear
 
   &-service
-    margin-left: 3%
+    margin-left: 5%
     display: flex
     @media (max-width: $screen-md-max)
       margin-left: 7%
     @media (max-width: $screen-sm-max)
-      margin-left: 4%
+      margin-left: 2%
     @media (max-width: $screen-xs-max)
       display: none
     &__time
@@ -357,7 +366,7 @@
       margin-left: 30px
       cursor: pointer
       @media (max-width: $screen-md-max)
-        margin-left: 40px
+        margin-left: rem(35px)
       svg
         width: 40px
         height: 40px

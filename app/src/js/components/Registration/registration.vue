@@ -11,7 +11,7 @@
                 </div>
                 <div class="col">
                     <div class="ui-title center">
-                        <h4> Условия </h4>
+                        <h4 class="registration-condition"> Условия </h4>
                     </div>
                 </div>
             </div>

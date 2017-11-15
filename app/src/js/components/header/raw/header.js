@@ -4,7 +4,7 @@ export default {
     data: () => {
         return {
             modalState: true,
-            signIn: false
+            signInData: true
         }
     },
     methods: {
