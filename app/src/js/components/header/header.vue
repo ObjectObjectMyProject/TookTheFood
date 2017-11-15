@@ -235,9 +235,13 @@
                     </div>
                 </div>
                 <div class="header-login">
-                    <a href="" class="header-login__link" v-if="signInData">
-                        <div class="header-login__pic">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <div class="header-login__link" v-if="signIn">
+
+                        <div class="header-login__text" >
+
+							<router-link to="/registration" class="header-login__text-registration"  >
+								<div class="header-login__pic">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								 viewBox="0 0 350 350" style="enable-background:new 0 0 350 350;" xml:space="preserve">
 								<path d="M175,171.173c38.914,0,70.463-38.318,70.463-85.586C245.463,38.318,235.105,0,175,0s-70.465,38.318-70.465,85.587
 									C104.535,132.855,136.084,171.173,175,171.173z"/>
@@ -247,15 +251,13 @@
 									s-38.586-14.761-38.586-14.761c-81.395,14.69-92.803,37.805-94.303,117.982c-0.123,6.547-0.18,6.891-0.202,6.131
 									c0.005,1.424,0.011,4.058,0.011,8.651c0,0,19.592,39.496,133.08,39.496c113.486,0,133.08-39.496,133.08-39.496
 									c0-2.951,0.002-5.003,0.005-6.399C308.062,304.575,308.018,303.664,307.935,298.397z"/>
-							</svg>
-                        </div>
-                        <div class="header-login__text" >
-							<router-link to="/registration" >
+								</svg>
+								</div>
                             	Регистрация
 							</router-link>
 
                         </div>
-                    </a>
+                    </div>
 					<div class="header-login__signIn" v-if="signInData">
 						<span @click="signIn" >
 							Вход
