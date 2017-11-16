@@ -234,8 +234,8 @@
 						</svg>
                     </div>
                 </div>
-                <div class="header-login">
-                    <div class="header-login__link" v-if="signIn">
+                <div class="header-login" v-if="!auth">
+                    <div class="header-login__link">
 
                         <div class="header-login__text" >
 
@@ -258,12 +258,17 @@
 
                         </div>
                     </div>
-					<div class="header-login__signIn" v-if="signInData">
+					<div class="header-login__signIn">
 						<span @click="signIn" >
 							Вход
 						</span>
 					</div>
                 </div>
+				<div class="header-login__auth" v-else="auth">
+					<a href="">
+						{{ mail }}
+					</a>
+				</div>
             </div>
             <div class="row">
                 <div class="header-bottom">

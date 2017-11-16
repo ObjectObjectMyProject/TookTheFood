@@ -7,9 +7,11 @@ export default {
             signInData: true
         }
     },
+    props: ['mail', 'auth'],
     methods: {
         signIn: function (){
             this.$parent.$emit('sign');
+            console.log(this.showAuthLink);
         }
     },
     mounted: function(){

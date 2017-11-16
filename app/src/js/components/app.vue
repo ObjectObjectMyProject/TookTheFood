@@ -1,6 +1,6 @@
 <template>
     <div id="app" v-bind:class="{hidden: hiddenOverflow}">
-        <HeaderMain/>
+        <HeaderMain :mail="mail" :auth="authUser"/>
         <router-view></router-view>
         <FooterMain></FooterMain>
         <div class="modal-view" v-bind:class="{ open: openModal }">
@@ -90,6 +90,8 @@
         data: function(){
             return {
                 name: '',
+                mail: '',
+                authUser: false,
                 openModal: false,
                 hiddenOverflow: false,
                 user: {
@@ -105,15 +107,31 @@
             HeaderMain,
             FooterMain
         },
+
         mounted: function() {
+
+            Firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    console.log(user);
+                    this.authUser = true;
+                    this.mail = user.email;
+                } else {
+                    console.log('error!');
+                }
+            });
+
 
         },
         created() {
+
+
 
             this.$on('sign', function(status){
                 this.openModal = true;
                 this.hiddenOverflow = true;
             })
+
+
         },
         methods: {
             say(){
@@ -129,6 +147,9 @@
 
                         this.openModal = false;
                         this.hiddenOverflow = false;
+                        this.mail = res.email;
+                        this.authUser = true;
+
                         console.dir(res);
                     })
                     .catch(function(error) {
@@ -138,6 +159,8 @@
 
                     // ...
                 });
+                let user = Firebase.auth().currentUser;
+                console.log(user);
             }
 
         }
