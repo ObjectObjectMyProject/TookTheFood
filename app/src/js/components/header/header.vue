@@ -11,7 +11,7 @@
                     <nav class="header-category__nav">
                         <ul>
                             <li class="header-category__list">
-								<router-link to="/registration" class="header-category__link">
+								<router-link to="/pizza" class="header-category__link">
 									<span class="header-category__link-pic">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 511.985 511.985" style="enable-background:new 0 0 511.985 511.985;" xml:space="preserve">
@@ -64,7 +64,7 @@
 								</router-link>
                             </li>
                             <li class="header-category__list">
-								<router-link to="/registration" class="header-category__link">
+								<router-link to="/category/drinks" class="header-category__link">
 									<span class="header-category__link-pic">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 509.132 509.132" style="enable-background:new 0 0 509.132 509.132;" xml:space="preserve">
@@ -109,7 +109,7 @@
 								</router-link>
                             </li>
                             <li class="header-category__list">
-								<router-link to="/registration" class="header-category__link">
+								<router-link to="/category/rolls" class="header-category__link">
 									<span class="header-category__link-pic">
 										<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 513.173 513.173" style="enable-background:new 0 0 513.173 513.173;" xml:space="preserve">
@@ -265,9 +265,37 @@
 					</div>
                 </div>
 				<div class="header-login__auth" v-else="auth">
-					<a href="">
-						{{ mail }}
-					</a>
+					<div class="header-login__auth-container">
+						<div class="header-login__auth-user">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 409.165 409.164" style="enable-background:new 0 0 409.165 409.164;"
+								 xml:space="preserve">
+									<path d="M204.583,216.671c50.664,0,91.74-48.075,91.74-107.378c0-82.237-41.074-107.377-91.74-107.377
+										c-50.668,0-91.74,25.14-91.74,107.377C112.844,168.596,153.916,216.671,204.583,216.671z"/>
+									<path d="M407.164,374.717L360.88,270.454c-2.117-4.771-5.836-8.728-10.465-11.138l-71.83-37.392
+										c-1.584-0.823-3.502-0.663-4.926,0.415c-20.316,15.366-44.203,23.488-69.076,23.488c-24.877,0-48.762-8.122-69.078-23.488
+										c-1.428-1.078-3.346-1.238-4.93-0.415L58.75,259.316c-4.631,2.41-8.346,6.365-10.465,11.138L2.001,374.717
+										c-3.191,7.188-2.537,15.412,1.75,22.005c4.285,6.592,11.537,10.526,19.4,10.526h362.861c7.863,0,15.117-3.936,19.402-10.527
+										C409.699,390.129,410.355,381.902,407.164,374.717z"/>
+							</svg>
+						</div>
+						<a href="" class="header-login__auth-link">
+							{{ mail }}
+						</a>
+					</div>
+					<button class="header-login__auth-out" @click="signOut">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 width="494.459px" height="494.459px" viewBox="0 0 494.459 494.459" style="enable-background:new 0 0 494.459 494.459;"
+							 xml:space="preserve">
+							<path d="M0,21.479v451.5h34v-82.953h11.536v82.456l141.086-30.854V98.84L45.536,67.985v53.447H34V55.479h426.459v65.953h-12.535
+								V67.985L306.838,98.84v342.788l141.086,30.854v-82.456h12.535v82.953h34V21.479H0z M162.971,248.046
+								c5.036,0,9.12,4.789,9.12,10.697s-4.084,10.697-9.12,10.697c-5.036,0-9.121-4.789-9.121-10.697S157.935,248.046,162.971,248.046z
+								 M45.536,168.453v174.55H34v-174.55H45.536z M330.486,269.441c-5.035,0-9.121-4.789-9.121-10.698
+								c0-5.908,4.086-10.695,9.121-10.695s9.121,4.787,9.121,10.695C339.607,264.652,335.521,269.441,330.486,269.441z M460.457,343.003
+								h-12.535v-174.55h12.535V343.003z"/>
+						</svg>
+						<span> Выйти </span>
+					</button>
 				</div>
             </div>
             <div class="row">
@@ -502,7 +530,7 @@
                                 </a>
                             </li>
                             <li class="header-nav__list">
-                                <a href="#" class="header-nav__link"> Условия и Доставка </a>
+                                <router-link to="'/" class="header-nav__link"> Условия и Доставка </router-link>
                             </li>
                             <li class="header-nav__list">
                                 <a href="#" class="header-nav__link"> Акции </a>

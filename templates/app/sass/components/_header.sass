@@ -381,3 +381,55 @@
 
 .header-login__text-registration
   display: flex
+
+.header-login__auth
+  display: flex
+  flex-direction: column
+  align-items: center
+  flex-grow: 1
+  &-container
+    display: flex
+    align-items: center
+    height: 25px
+    text-overflow: ellipsis
+    overflow: hidden
+    width: 150px
+  &-link
+    margin-left: 5px
+    font-size: rem(14px)
+    font-family: "LatoBold"
+    line-height: 1
+  &-user
+    width: 16px
+    display: flex
+    align-items: center
+    fill: $black
+    svg
+      width: 20px
+      height: 20px
+  &-out
+    width: 150px
+    height: 30px
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    background-color: $black
+    border: none
+    border-radius: 3px
+    outline: none
+    span
+      font-family: RobotoBold
+      color: $white
+    svg
+      width: 20px
+      height: 20px
+      margin-right: 8px
+      fill: $white
+
+
+.header-login__auth
+  width: 150px
+  a
+    text-overflow: ellipsis
+    overflow: hidden

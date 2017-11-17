@@ -74,6 +74,7 @@ export default {
 
         registrate: function () {
             console.log(this.formData.userMail);
+            let myDatabase = firebase.database();
             firebase.auth().createUserWithEmailAndPassword(this.formData.userMail, this.formData.password )
                 .then(
                     result => {
@@ -82,6 +83,14 @@ export default {
                         this.secondScreen = true;
                         this.token = result.uid;
                         this.$root.$emit('say', this.token);
+                        console.log(pushObj);
+                        myDatabase.ref('users/' + result.uid).set({
+                            name: this.formData.userName,
+                            email: this.formData.userMail,
+                            products: {},
+                            role: {}
+
+                        });
                     },
                     error => {
                         console.dir("Rejected: " + error);
@@ -89,6 +98,7 @@ export default {
                         let errorMessage = error.message;
                     }
                 );
+
         },
         mailValidate: function(){
 
@@ -187,8 +197,8 @@ export default {
         },
         checkAllfields: function(obj){
             let counter = 0;
-            console.dir(counter);
-            console.dir(obj);
+            // console.dir(counter);
+            // console.dir(obj);
             for(let val in obj){
                 if(!obj[val]){
                     counter++;

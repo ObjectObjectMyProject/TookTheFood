@@ -119,6 +119,9 @@
                     console.log('error!');
                 }
             });
+            const database = Firebase.database();
+
+
 
 
         },
@@ -129,7 +132,12 @@
             this.$on('sign', function(status){
                 this.openModal = true;
                 this.hiddenOverflow = true;
-            })
+            });
+
+            this.$on('out', function(status){
+                this.authUser = false;
+            });
+
 
 
         },
