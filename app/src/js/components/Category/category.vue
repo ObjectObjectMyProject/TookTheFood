@@ -252,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="category-item__buy">
-                                    <button class="category-item__buy-btn">
+                                    <button class="category-item__buy-btn" @click="product.addProduct">
                                         Заказать
                                     </button>
                                 </div>

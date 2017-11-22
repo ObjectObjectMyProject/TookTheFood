@@ -28,7 +28,6 @@ const router = new VueRouter({
         { path: '/profile/:id', component: Profile },
         { path: '/pizza', component: Category },
         { path: '*', component: Error }
-
     ]
 });
 

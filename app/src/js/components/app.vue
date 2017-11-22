@@ -112,7 +112,7 @@
 
             Firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
-                    console.log(user);
+
                     this.authUser = true;
                     this.mail = user.email;
                 } else {
@@ -124,8 +124,13 @@
 
 
 
+
         },
         created() {
+
+            this.$on('newProduct', function(obj){
+                this.openModal = true;
+            });
 
 
 

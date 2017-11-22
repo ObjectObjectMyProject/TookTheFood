@@ -433,3 +433,56 @@
   a
     text-overflow: ellipsis
     overflow: hidden
+
+
+.header-cart__dropdown
+  &-item
+    display: flex
+    align-items: center
+    padding: 10px 20px
+    transition: all .2s linear
+    cursor: pointer
+    &:hover
+      background-color: #e7e7e7
+  &-mainTitle
+    font-family: RobotoBold
+    font-size: rem(24px)
+    color: $black
+    text-align: center
+    margin-bottom: 10px
+  &-close
+    display: flex
+    align-items: center
+    margin-left: 50px
+    svg
+      width: 22px
+      height: 22px
+      fill: $red
+      cursor: pointer
+  &-text
+    margin-left: 20px
+  &-price
+    font-family: RobotoBold
+    font-size: rem(22px)
+    color: #333333
+  &-count
+    font-family: RobotoBold
+    font-size: 14px
+  &-img
+    width: 60px
+    height: 60px
+    img
+      width: 100%
+      height: auto
+      display: block
+  &-title
+    text-align: left
+    margin-top: 0
+    h6
+      font-size: rem(16px)
+      overflow: hidden
+      width: 200px
+      margin: 0
+      -ms-text-overflow: ellipsis
+      text-overflow: ellipsis
+      color: $black

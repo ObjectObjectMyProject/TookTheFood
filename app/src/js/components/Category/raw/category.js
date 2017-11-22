@@ -11,6 +11,29 @@ export default {
     },
     created () {
 
+
+
+
+
+    },
+    mounted(){
+
+        var self = this;
+
+        class newProduct {
+
+            constructor (picture, productName, count, cost) {
+
+                this.pic = picture;
+                this.productName = productName;
+                this.count = count;
+                this.cost = cost;
+            }
+
+
+
+        }
+
         class Product {
 
             constructor (cost, description, productName, url, weight) {
@@ -19,15 +42,24 @@ export default {
                 this.productName = productName;
                 this.url = url;
                 this.weight = weight;
-                this.count = 0;
+                this.count = 1;
                 this.plus = () => {
                     return this.count += 1;
-                }
+                };
                 this.minus = () => {
-                    if( this.count > 0 ){
+                    if( this.count > 1 ){
                         return this.count -= 1;
                     }
-                    return 0;
+                    return 1;
+                };
+                this.getCost = () => {
+                    return +(this.count * this.cost).toFixed(2);
+                };
+                this.addProduct = () => {
+                    let allCost = this.getCost();
+                    let result =  new newProduct( this.url, this.productName, this.count, allCost );
+                    self.addNewProject(result);
+                    // self.$root.$emit('newProduct', result);
                 }
             }
 
@@ -52,11 +84,11 @@ export default {
         });
 
     },
-    mounted(){
-
-    },
     methods: {
-
+        addNewProject (obj) {
+            console.log(this);
+            this.$root.$emit('newProduct', obj);
+        }
 
     }
 }
