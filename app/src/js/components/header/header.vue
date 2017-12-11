@@ -11,7 +11,7 @@
                     <nav class="header-category__nav">
                         <ul>
                             <li class="header-category__list">
-								<router-link to="/pizza" class="header-category__link">
+								<router-link to="/category/pizza" class="header-category__link">
 									<span class="header-category__link-pic">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 511.985 511.985" style="enable-background:new 0 0 511.985 511.985;" xml:space="preserve">
@@ -279,21 +279,12 @@
 										C409.699,390.129,410.355,381.902,407.164,374.717z"/>
 							</svg>
 						</div>
-						<a href="" class="header-login__auth-link">
+						<router-link tag="a" :to="'/profile/' + uid" class="header-login__auth-link">
 							{{ mail }}
-						</a>
+						</router-link>
 					</div>
 					<button class="header-login__auth-out" @click="signOut">
-						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							 width="494.459px" height="494.459px" viewBox="0 0 494.459 494.459" style="enable-background:new 0 0 494.459 494.459;"
-							 xml:space="preserve">
-							<path d="M0,21.479v451.5h34v-82.953h11.536v82.456l141.086-30.854V98.84L45.536,67.985v53.447H34V55.479h426.459v65.953h-12.535
-								V67.985L306.838,98.84v342.788l141.086,30.854v-82.456h12.535v82.953h34V21.479H0z M162.971,248.046
-								c5.036,0,9.12,4.789,9.12,10.697s-4.084,10.697-9.12,10.697c-5.036,0-9.121-4.789-9.121-10.697S157.935,248.046,162.971,248.046z
-								 M45.536,168.453v174.55H34v-174.55H45.536z M330.486,269.441c-5.035,0-9.121-4.789-9.121-10.698
-								c0-5.908,4.086-10.695,9.121-10.695s9.121,4.787,9.121,10.695C339.607,264.652,335.521,269.441,330.486,269.441z M460.457,343.003
-								h-12.535v-174.55h12.535V343.003z"/>
-						</svg>
+
 						<span> Выйти </span>
 					</button>
 				</div>
@@ -560,28 +551,31 @@
 								Корзина
 							</span>
                             <span class="header-cart__button-counter">
-								0
+								{{ allCount }}
 							</span>
                         </button>
                         <div class="header-cart__dropdown">
                             <h4 class="header-cart__dropdown-mainTitle"> Заказ: </h4>
+							<div class="header-cart__dropdown-empty" v-if=" cart.length === 0 ">
+								- Пусто -
+							</div>
                             <div class="header-cart__dropdown-wrap">
-                                <div class="header-cart__dropdown-item">
+                                <div class="header-cart__dropdown-item" v-for="(value, index) in cart">
 									<div class="header-cart__dropdown-img">
-										<img src="img/products/pizza/margarita.png" alt="Sushi">
+										<img v-bind:src="'/' + value.pic" alt="Sushi">
 									</div>
 									<div class="header-cart__dropdown-text">
 										<div class="header-cart__dropdown-title">
-											<h6> Привет </h6>
+											<h6> {{ value.productName }} </h6>
 										</div>
 										<div class="header-cart__dropdown-count">
-											Количество: <span> 1 </span>
+											Количество: <span> {{ value.count }} </span>
 										</div>
 									</div>
 									<div class="header-cart__dropdown-price">
-										23.5р
+										{{ value.cost + 'р.' }}
 									</div>
-									<div class="header-cart__dropdown-close">
+									<div class="header-cart__dropdown-close" v-on:click="removeItem(value, index)">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										 viewBox="0 0 27.965 27.965" style="enable-background:new 0 0 27.965 27.965;" xml:space="preserve">
 												<path d="M13.98,0C6.259,0,0,6.261,0,13.983c0,7.721,6.259,13.982,13.98,13.982c7.725,0,13.985-6.262,13.985-13.982
@@ -592,6 +586,9 @@
 									</div>
                                 </div>
                             </div>
+							<div class="header-cart__dropdown-toCart" v-if=" cart.length > 0 ">
+								<button  v-on:click="goToCart"> Перейти в корзину </button>
+							</div>
                             <footer class="header-cart__dropdown-footer">
                                 <div class="header-cart__dropdown-counter">
 									<span class="header-cart__dropdown-icon">
@@ -603,7 +600,7 @@
 										Количество:
 									</span>
                                     <strong>
-                                        5
+										{{ allCount }}
                                     </strong>
                                 </div>
                                 <div class="header-cart__dropdown-cost">

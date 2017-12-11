@@ -3,6 +3,7 @@ import Vue from './vendor/vue';
 import VueRouter from 'vue-router';
 import App from './components/app.vue';
 import VueFire from 'vuefire';
+import AsyncComputed from 'vue-async-computed'
 
 
 import './vendor/slick/slick.min';
@@ -15,8 +16,11 @@ import Profile from './components/Profile/profile.vue';
 import Category from './components/Category/category.vue';
 
 
+
+
 Vue.use(VueRouter);
 Vue.use(VueFire);
+Vue.use(AsyncComputed);
 
 Vue.config.devtools = true;
 
@@ -26,7 +30,7 @@ const router = new VueRouter({
         { path: '/', component: Home },
         { path: '/registration', component: Registration },
         { path: '/profile/:id', component: Profile },
-        { path: '/pizza', component: Category },
+        { path: '/category/:name', component: Category },
         { path: '*', component: Error }
     ]
 });

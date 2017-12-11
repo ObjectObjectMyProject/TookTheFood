@@ -394,6 +394,8 @@
     text-overflow: ellipsis
     overflow: hidden
     width: 150px
+    background-color: #fafafa
+    padding: 0 5px
   &-link
     margin-left: 5px
     font-size: rem(14px)
@@ -418,13 +420,16 @@
     border: none
     border-radius: 3px
     outline: none
+    transition: all linear .2s
+    &:hover
+      background-color: $red
     span
       font-family: RobotoBold
       color: $white
     svg
-      width: 20px
-      height: 20px
-      margin-right: 8px
+      width: 16px
+      height: 16px
+      margin-right: 4px
       fill: $white
 
 
@@ -436,6 +441,32 @@
 
 
 .header-cart__dropdown
+  &-toCart
+    display: flex
+    justify-content: center
+    padding: 10px 0
+    border-top: 1px solid #eee
+    button
+      padding: 3px rem(10px)
+      display: block
+      font-family: RobotoBold
+      background-color: #66bb6a
+      border-radius: 4px
+      color: #fff
+      text-decoration: none
+      font-size: 14px
+      transition: .2s all linear
+      border: none
+      cursor: pointer
+      &:hover
+        background-color: #66bb6a + 10%
+  &-empty
+    text-align: center
+    margin: 10px 0
+    font-family: RobotoBold
+    font-size: rem(18px)
+    color: #afafaf
+
   &-item
     display: flex
     align-items: center
@@ -465,6 +496,7 @@
     font-family: RobotoBold
     font-size: rem(22px)
     color: #333333
+    width: rem(60px)
   &-count
     font-family: RobotoBold
     font-size: 14px
@@ -486,3 +518,8 @@
       -ms-text-overflow: ellipsis
       text-overflow: ellipsis
       color: $black
+
+
+.header-login__auth-link
+  color: $black
+  font-family: RobotoBold

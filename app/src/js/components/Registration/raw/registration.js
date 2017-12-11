@@ -48,9 +48,9 @@ export default {
 
     computed: {
         confirmBtnView: function(){
-            if(this.formErrors.userNameSuccess === true){
+            // if(this.formErrors.userNameSuccess === true){}
                 return this.confirmBtn = true;
-            }
+
         }
     },
 
@@ -60,8 +60,7 @@ export default {
         },
 
         goToHome: function(){
-
-
+            this.$router.push('/')
         },
         connectedToDB: function(f){
 
@@ -73,7 +72,6 @@ export default {
         },
 
         registrate: function () {
-            console.log(this.formData.userMail);
             let myDatabase = firebase.database();
             firebase.auth().createUserWithEmailAndPassword(this.formData.userMail, this.formData.password )
                 .then(
@@ -83,13 +81,11 @@ export default {
                         this.secondScreen = true;
                         this.token = result.uid;
                         this.$root.$emit('say', this.token);
-                        console.log(pushObj);
                         myDatabase.ref('users/' + result.uid).set({
                             name: this.formData.userName,
                             email: this.formData.userMail,
                             products: {},
                             role: {}
-
                         });
                     },
                     error => {
@@ -197,16 +193,11 @@ export default {
         },
         checkAllfields: function(obj){
             let counter = 0;
-            // console.dir(counter);
-            // console.dir(obj);
             for(let val in obj){
                 if(!obj[val]){
                     counter++;
-                    // console.dir("Значение равно: " + val + ' ' + obj[val]);
                 }
             }
-            // console.dir(counter);
-            // console.dir(obj);
             console.dir(this.confirmBtn);
 
             if(!counter){
@@ -215,17 +206,6 @@ export default {
             this.confirmBtn = false;
 
         }
-    },
-
-    ready: function(){
-
-    },
-    update: function(){
-
-    },
-    mounted: function(){
-
-
     }
 
 

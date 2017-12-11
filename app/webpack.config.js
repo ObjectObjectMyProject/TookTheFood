@@ -8,7 +8,7 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/js/app.js',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         publicPath: "/",
         filename: 'js/app.bundle.js'
     },
@@ -51,7 +51,7 @@ module.exports = {
       ]
     },
     devServer: {
-        contentBase: path.join(__dirname, './dist'),
+        contentBase: './dist',
         historyApiFallback: true,
         publicPath: '/',
         compress: true,

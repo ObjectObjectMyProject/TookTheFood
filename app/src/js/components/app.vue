@@ -1,6 +1,8 @@
 <template>
     <div id="app" v-bind:class="{hidden: hiddenOverflow}">
-        <HeaderMain :mail="mail" :auth="authUser"/>
+
+        <HeaderMain :uid="uid" :mail="mail" :auth="authUser"></HeaderMain>
+
         <router-view></router-view>
         <FooterMain></FooterMain>
         <div class="modal-view" v-bind:class="{ open: openModal }">
@@ -10,6 +12,7 @@
                         [x] Закрыть
                     </div>
                 </header>
+
                 <main class="modal-view__main">
                     <h2 class="modal-view__main-title">
                         Вход
@@ -97,7 +100,8 @@
                 user: {
                     mail: '',
                     password: ''
-                }
+                },
+                uid: ''
             }
         },
         firebase: {
@@ -109,30 +113,18 @@
         },
 
         mounted: function() {
-
             Firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
 
                     this.authUser = true;
                     this.mail = user.email;
-                } else {
-                    console.log('error!');
+                    this.uid = user.uid;
                 }
             });
             const database = Firebase.database();
-
-
-
-
-
-        },
-        created() {
-
             this.$on('newProduct', function(obj){
                 this.openModal = true;
             });
-
-
 
             this.$on('sign', function(status){
                 this.openModal = true;
@@ -144,9 +136,16 @@
             });
 
 
+        },
+        created() {
+
+
 
         },
         methods: {
+            handleProduct(obj){
+              console.log(obj);
+            },
             say(){
                 this.openModal = false;
                 this.hiddenOverflow = false;
@@ -162,13 +161,14 @@
                         this.hiddenOverflow = false;
                         this.mail = res.email;
                         this.authUser = true;
+                        this.uid = res.uid;
 
-                        console.dir(res);
+                        console.dir(this.uid);
                     })
                     .catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
+
+                        let errorCode = error.code;
+                        let errorMessage = error.message;
 
                     // ...
                 });

@@ -216,12 +216,13 @@
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-12">
                     <div class="category-filter__title">
-                        <h3> Название категории </h3>
+                        <h3> {{ $route.params.name }}</h3>
+
                     </div>
-                    <section class="category-items">
-                        <div class="category-item"  v-for="product in items">
+                    <section class="category-items" v-bind:class="{loadingItems: isLoadingItems }">
+                        <div class="category-item"  v-for="product in total">
                             <div class="category-item__pic">
-                                <img v-bind:src="product.url" alt="Sushi">
+                                <img v-bind:src="'/' + product.url" alt="Sushi">
                             </div>
                             <div class="category-item__title">
                                 <h5 v-text="product.productName"> Агацу ролл </h5>
